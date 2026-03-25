@@ -1,0 +1,14 @@
+Package: BHPMF
+Type: Package
+Title: Bayesian Hierarchical Probabilistic Matrix Factorization
+Version: 1.0.1
+Date: 2026-03-25
+Author: Franziska Schrodt, Farideh Fazayeli, Jens Kattge, Hanhuai Shan
+Maintainer: Your Name <your.email@example.com>
+Description: Uncertainty quantified imputation of hierarchical databases using Bayesian Probabilistic Matrix Factorization. Modernized for R 4.4.1.
+License: GPL (>= 2)
+SystemRequirements: C++14
+Depends: R (>= 4.0.0)
+Imports: Rcpp (>= 1.0.0), coda, MASS
+LinkingTo: Rcpp
+RoxygenNote: 7.2.3
