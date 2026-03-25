@@ -1,13 +1,21 @@
-## Bayesian Probabilistic Matrix Factorization
+# BHPMF (Modernized Version for R 4.0+) 🚀
 
-This R code provides an algorithm to fill gaps in large hierarchical databases. 
-The method was originally developed for plant trait data but is applicable to any hierarchically structured numerical database.
-Detailed instructions are given in the Vignette.
+This is a revived and modernized fork of the original **BHPMF** (Bayesian Hierarchical Probabilistic Matrix Factorization) R package. 
 
-Please note, due to compatibility issues with the C compiler in newer versions of R, please use R 3.4.4 when running BHPMF.
+The original method was developed to fill gaps in large, hierarchically structured numerical databases (e.g., plant functional trait databases like TRY or GRooT). It utilizes taxonomic hierarchy (e.g., Family -> Genus -> Species) to provide uncertainty-quantified imputation for sparse trait matrices.
 
-For Mac users, please use the following instructions to make sure the C compiler works (thank you to Tom Walker for sorting this out):
-1. Install Xcode and command line developer tools.
-2. Install openMP: http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/
-3. Manually reinstall the header files (new since macOS Sierra and Mojave): https://donatstudios.com/MojaveMissingHeaderFiles
+## ✨ What's New in this Version?
 
+The original package was archived due to fatal compatibility issues with modern C++ compilers and R updates. **This fork brings BHPMF back to life for modern R environments (Tested on R 4.4.1):**
+
+* **Modern Compiler Compatibility:** Fixed the `too few arguments` errors caused by modern Fortran (BLAS/LAPACK) requiring hidden character length arguments (e.g., in `dgemm`, `dtrmv`).
+* **Memory Safety & Crash Prevention:** The original C++ code caused fatal R Session crashes (Segfaults / Exit code -1073741819) when output directories did not exist. This has been completely rewritten using R's native `Rf_error()` to provide safe, readable error messages without crashing your IDE.
+* **Format String Fixes:** Fixed C++ integer formatting warnings (`%f` to `%d`).
+
+## 📦 Installation
+
+You can install this modernized version directly from GitHub using `devtools` or `remotes`:
+
+```R
+# install.packages("remotes")
+remotes::install_github("EliotOK/BHPMF_neo")
