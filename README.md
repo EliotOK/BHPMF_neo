@@ -19,3 +19,28 @@ You can install this modernized version directly from GitHub using `devtools` or
 ```R
 # install.packages("remotes")
 remotes::install_github("EliotOK/BHPMF_neo")
+``` 
+## 💡 Usage & Important Notes
+Detailed instructions are available in the package Vignette, but please keep the following crucial points in mind when preparing your trait data:
+
+No "All-NA" Rows Allowed: The cross-validation function (CalculateCvRmse) and the underlying Gibbs sampler will fail if a species has NA for all traits.
+
+Solution: Prune your matrix before gap-filling. Remove rows that are 100% missing. After imputation, you can graft them back using the predicted mean values of their respective Genus or Family.
+
+Absolute Paths Matter: When running GapFilling(), ensure your mean.gap.filled.output.path and std.gap.filled.output.path point to existing directories (e.g., "C:/output/mean.txt" on Windows). Do not use Linux-style /tmp/ paths on Windows.
+
+Data Alignment: Ensure the rows in your trait.info matrix strictly correspond to the rows in your hierarchy.info data frame.
+
+## 🍎 Legacy Note for Mac Users
+The following instructions from the original authors may still be helpful for older Mac setups, though modern R binaries often handle this better now:
+
+If you encounter C compiler issues on macOS, make sure your environment is properly set up for OpenMP:
+
+Install Xcode and command line developer tools.
+
+Install openMP: http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/
+
+Manually reinstall the header files (if on macOS Sierra/Mojave): https://donatstudios.com/MojaveMissingHeaderFiles
+
+**Note that ALL CODES COMES FROM VIBE CODING**
+***
